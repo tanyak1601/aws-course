@@ -47,7 +47,7 @@ https://d28sk6x9iy258y.cloudfront.net/
             "Sid": "2",
             "Effect": "Allow",
             "Principal": {
-                "AWS": "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity E1F6DMUBYPXA50"
+                "AWS": "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity E1ZO0CFERV34I3"
             },
             "Action": "s3:GetObject",
             "Resource": "arn:aws:s3:::aws-course-bucket-01/*"
@@ -55,6 +55,8 @@ https://d28sk6x9iy258y.cloudfront.net/
     ]
 }
 ```
+
+## Task 2.2  **Automated Deployment**
 
 ---  
 
