@@ -58,8 +58,21 @@ https://d28sk6x9iy258y.cloudfront.net/
 
 ## Task 2.2  **Automated Deployment**
 
----  
+#### Bucket name
+```
+aws-course-bucket-02
+```
 
+#### Bucket website endpoint
+```
+http://aws-course-bucket-02.s3-website-eu-west-1.amazonaws.com
+```
+
+
+#### CloudFront Distribution url
+```
+https://d16rnrcxvv7kna.cloudfront.net/
+```
 
 
 
