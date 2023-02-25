@@ -1,3 +1,84 @@
+
+# Task 2
+## Task 2.1  **Manual Deployment**
+
+#### Bucket name
+```
+aws-course-bucket-01
+```
+
+#### Bucket website endpoint 
+
+```
+http://aws-course-bucket-01.s3-website-eu-west-1.amazonaws.com
+```
+
+#### CloudFront Distribution url
+```
+https://d28sk6x9iy258y.cloudfront.net/
+```
+
+#### Bucket policy (initial):
+```json
+{
+  "Id": "Policy1676716141585",
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "Stmt1676716140475",
+      "Action": [
+        "s3:GetObject"
+      ],
+      "Effect": "Allow",
+      "Resource": "arn:aws:s3:::aws-course-bucket-01/*",
+      "Principal": "*"
+    }
+  ]
+}
+```
+
+#### Bucket policy (with only access via CloudFront):
+```json
+{
+    "Version": "2012-10-17",
+    "Id": "Policy1676654982607",
+    "Statement": [
+        {
+            "Sid": "2",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity E1ZO0CFERV34I3"
+            },
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::aws-course-bucket-01/*"
+        }
+    ]
+}
+```
+
+## Task 2.2  **Automated Deployment**
+
+#### Bucket name
+```
+aws-course-bucket-02
+```
+
+#### Bucket website endpoint
+```
+http://aws-course-bucket-02.s3-website-eu-west-1.amazonaws.com
+```
+
+
+#### CloudFront Distribution url
+```
+https://d16rnrcxvv7kna.cloudfront.net/
+```
+
+
+
+
+
+
 # React-shop-cloudfront
 
 This is frontend starter project for nodejs-aws mentoring program. It uses the following technologies:
