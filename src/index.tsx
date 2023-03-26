@@ -1,12 +1,13 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import React from "react";
+import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import { createRoot } from "react-dom/client";
 import App from "~/components/App/App";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
 import { BrowserRouter } from "react-router-dom";
-import { QueryClient, QueryClientProvider, MutationCache } from "react-query";
+import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { theme } from "~/theme";
 
@@ -14,10 +15,10 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: { refetchOnWindowFocus: false, retry: false, staleTime: Infinity },
   },
-  mutationCache: new MutationCache({
-    // @ts-ignore
-    onError: (error) => toast.error(`Something went wrong: ${error.message}`),
-  }),
+});
+
+axios.interceptors.response.use(undefined, function (error) {
+  return toast.error(`Something went wrong: ${error.message}`);
 });
 
 if (import.meta.env.DEV) {
