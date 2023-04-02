@@ -1,4 +1,7 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React from "react";
+import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
 import { createRoot } from "react-dom/client";
 import App from "~/components/App/App";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -12,6 +15,10 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: { refetchOnWindowFocus: false, retry: false, staleTime: Infinity },
   },
+});
+
+axios.interceptors.response.use(undefined, function (error) {
+  return toast.error(`Something went wrong: ${error.message}`);
 });
 
 if (import.meta.env.DEV) {
@@ -28,6 +35,15 @@ root.render(
       <QueryClientProvider client={queryClient}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
+          <Toaster
+            position="top-center"
+            toastOptions={{
+              duration: 3000,
+              style: {
+                minHeight: "70px",
+              },
+            }}
+          />
           <App />
         </ThemeProvider>
         <ReactQueryDevtools initialIsOpen={false} />
